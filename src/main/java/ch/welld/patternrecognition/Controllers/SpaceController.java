@@ -26,7 +26,7 @@ public class SpaceController {
     public ResponseEntity<?> deleteSpace() {
         log.info("Clearing space: All the previously added points are being removed");
         spaceService.clearAll();
-        return new ResponseEntity<>("All point on space has been cleared", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("All points on space has been cleared", HttpStatus.ACCEPTED);
     }
 
 

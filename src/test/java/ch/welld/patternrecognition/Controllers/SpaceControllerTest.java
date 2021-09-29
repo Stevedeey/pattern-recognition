@@ -63,7 +63,7 @@ class SpaceControllerTest {
                 .andReturn().getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.ACCEPTED.value());
-        assertThat(response.getContentAsString()).isEqualTo("All point on space has been cleared");
+        assertThat(response.getContentAsString()).isEqualTo("All points on space has been cleared");
         verify(mockSpaceService).clearAll();
     }
 
