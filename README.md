@@ -47,12 +47,13 @@ You need the following to build and run the application:
 
 <br/>
 
-- ###Add a point to the space
 
-```json lines
+- ### Add a point to the space
+
+```http request
 POST /point with body { "x": ..., "y": ... }
 ```
-####Demonstration
+#### Demonstration
 
 
 
@@ -77,12 +78,12 @@ Output (JSON)
 ```
 
 
-- ###Get all points in the space
+- ### Get all points in the space
 
 ```http request
 GET /space
 ```
-####Demonstration
+#### Demonstration
 
 
 
@@ -129,12 +130,12 @@ Output (JSON)
 ```
 
 
-- ###Get all line segments passing through at least N points.
+- ### Get all line segments passing through at least N points.
 
 ```http request
 GET /lines/{N}
 ```
-####Demonstration
+#### Demonstration
 
 Let's prepare the scene by adding some points to the space before making a request to get lines
 ```json lines
@@ -143,7 +144,6 @@ Let's prepare the scene by adding some points to the space before making a reque
     POST /point{ "x": -4.0, "y": 2.0 }
     POST /point{ "x": 1.0, "y": 2.0 }
     POST /point{ "x": 4.0, "y": 2.0 }
-    
 ```
 Now, we can make a GET request
 ```http request
@@ -270,13 +270,13 @@ Output (JSON)
 ```
 
 
-- ###Remove all points from the space
+- ### Remove all points from the space
 
 ```http request
 DELETE /space
 ```
 
-####Output
+#### Output
 ```json lines
   All points on space has been cleared
 ```
