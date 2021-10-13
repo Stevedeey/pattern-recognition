@@ -19,7 +19,7 @@ public class SpaceController {
     @PostMapping("/point")
     public ResponseEntity<?> addPoint(@RequestBody Point point) {
         log.info("adding point to the space");
-        return new ResponseEntity<>(spaceService.addPoint(point), HttpStatus.OK);
+        return new ResponseEntity<>(spaceService.addPoint(point), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/space")
@@ -39,7 +39,7 @@ public class SpaceController {
 
     @GetMapping("/lines/{n}")
     public ResponseEntity<?> getAllPointsFromEachLineByNumberOfPoints(@PathVariable(name = "n") int quantifyOfPoints) {
-        log.info("Fetching all lines previously added to the space contains {} or more points", quantifyOfPoints);
+        log.info("Fetching all lines previously added to the space which contains {} or more points", quantifyOfPoints);
         return new ResponseEntity<>(spaceService.getAllPointsFromLinesByNumberOfPoints(quantifyOfPoints), HttpStatus.OK);
     }
 

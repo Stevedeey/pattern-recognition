@@ -1,5 +1,6 @@
 package ch.welld.patternrecognition.Models;
 
+import ch.welld.patternrecognition.Exceptions.SamePointException;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,16 +12,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LineTest {
 
     private Line lineUnderTest1;
-    private Line lineUnderTest2;
-    private Line lineUnderTest3;
-    private Line lineUnderTest4;
 
     @BeforeEach
     void setUp() {
         lineUnderTest1 = new Line(0.0, 0.0);
-        lineUnderTest2 = new Line(0.0, 2.0);
-        lineUnderTest3 = new Line(2.0, 1.0);
-        lineUnderTest4 = new Line(1.0, 0.0);
     }
 
     /**
@@ -80,6 +75,15 @@ class LineTest {
     void testLineConstructorWithTwoPoints() {
             assertThat(new Line(new Point(2,2), new Point(1,2)))
                     .isInstanceOf(lineUnderTest1.getClass());
+    }
+
+
+    @Test
+    void testLineWithSamePointsThrowsSamePointException() {
+
+        assertThatThrownBy(
+                () -> new Line(new Point(2,2), new Point(2,2)))
+                .isInstanceOf(SamePointException.class);
     }
 
 }

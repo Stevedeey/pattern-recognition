@@ -23,5 +23,4 @@ public class Point implements Comparable<Point>{
         if (this.x < anotherPoint.x || this.y < anotherPoint.y) return -1;
         return 0;
     }
-
 }

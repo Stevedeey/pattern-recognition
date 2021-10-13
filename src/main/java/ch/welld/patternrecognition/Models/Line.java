@@ -1,5 +1,6 @@
 package ch.welld.patternrecognition.Models;
 
+import ch.welld.patternrecognition.Exceptions.SamePointException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -33,7 +34,7 @@ public class Line implements Comparable<Line>{
     public Line(Point point1, Point point2) {
 
         if (point1.equals(point2)) {
-            throw new IllegalStateException("Point1 and Point2 are the same: " +
+            throw new SamePointException("Point1 and Point2 are the same: " +
                     "A line cannot be made of points in the same position" + point1 + "  " + point2);
         }
 
@@ -52,12 +53,14 @@ public class Line implements Comparable<Line>{
         double lineGradient;
         double lineConstant;
 
-        if (y1-y2 == 0.0) { // For the case of a horizontal line
+        if (y1-y2 == 0.0) {                                     // For the case of a horizontal line
             lineGradient = 0.0;
             lineConstant = point1.getY();
-        } else if (x1-x2 == 0.0) { // For the case of a vertical line
+
+        } else if (x1-x2 == 0.0) {                              // For the case of a vertical line
             lineGradient = Double.NaN;
             lineConstant = point1.getX();
+
         } else {
             lineGradient = (y1-y2) / (x1-x2);
             lineConstant = point1.getY() - lineGradient*point1.getX(); // c = -mx + y
